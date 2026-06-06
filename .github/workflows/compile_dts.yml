@@ -1,0 +1,28 @@
+name: Recompile Device Tree
+
+on:
+  push:
+    branches:
+      - main  # Achte darauf, dass hier dein Branch-Name steht (meist main oder master)
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Device Tree Compiler
+        run: sudo apt-get update && sudo apt-get install -y device-tree-compiler
+
+      - name: Compile DTS to DTB
+        run: |
+          echo "Kompiliere device_tree.dts..."
+          dtc -I dts -O dtb -o device_tree.dtb device_tree.dts
+          echo "Kompilierung erfolgreich abgeschlossen."
+
+      - name: Upload DTB Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: device_tree_dtb
+          path: device_tree.dtb
