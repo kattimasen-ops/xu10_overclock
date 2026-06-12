@@ -427,64 +427,64 @@ cpu0-opp-table {
 			clock-latency-ns = <0x9c40>;
 		};
 
-   opp-1368000000 {
-			opp-hz = <0x00 0x518bdc00>;
-			opp-microvolt = <0x149970 0x149970 0x149970>;
-			opp-microvolt-L0 = <0x149970 0x149970 0x149970>;
-			opp-microvolt-L1 = <0x149970 0x149970 0x149970>;
-			opp-microvolt-L2 = <0x149970 0x149970 0x149970>;
-			opp-microvolt-L3 = <0x149970 0x149970 0x149970>;
-			clock-latency-ns = <0x9c40>;
+        opp-1368000000 {
+			opp-hz = /bits/ 64 <1368000000>;
+			opp-microvolt = <1300000 1300000 1400000>;
+			opp-microvolt-L0 = <1300000 1300000 1400000>;
+			opp-microvolt-L1 = <1300000 1300000 1400000>;
+			opp-microvolt-L2 = <1300000 1300000 1400000>;
+			opp-microvolt-L3 = <1300000 1300000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 
 		opp-1416000000 {
-			opp-hz = <0x00 0x54683c00>;
-			opp-microvolt = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L0 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L1 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L2 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L3 = <0x155cc0 0x155cc0 0x155cc0>;
-			clock-latency-ns = <0x9c40>;
+			opp-hz = /bits/ 64 <1416000000>;
+			opp-microvolt = <1325000 1325000 1400000>;
+			opp-microvolt-L0 = <1325000 1325000 1400000>;
+			opp-microvolt-L1 = <1325000 1325000 1400000>;
+			opp-microvolt-L2 = <1325000 1325000 1400000>;
+			opp-microvolt-L3 = <1325000 1325000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 
 		opp-1440000000 {
-			opp-hz = <0x00 0x55d4a800>;
-			opp-microvolt = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L0 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L1 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L2 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L3 = <0x155cc0 0x155cc0 0x155cc0>;
-			clock-latency-ns = <0x9c40>;
+			opp-hz = /bits/ 64 <1440000000>;
+			opp-microvolt = <1350000 1350000 1400000>;
+			opp-microvolt-L0 = <1350000 1350000 1400000>;
+			opp-microvolt-L1 = <1350000 1350000 1400000>;
+			opp-microvolt-L2 = <1350000 1350000 1400000>;
+			opp-microvolt-L3 = <1350000 1350000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 
 		opp-1464000000 {
-			opp-hz = <0x00 0x57411400>;
-			opp-microvolt = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L0 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L1 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L2 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L3 = <0x155cc0 0x155cc0 0x155cc0>;
-			clock-latency-ns = <0x9c40>;
+			opp-hz = /bits/ 64 <1464000000>;
+			opp-microvolt = <1350000 1350000 1400000>;
+			opp-microvolt-L0 = <1350000 1350000 1400000>;
+			opp-microvolt-L1 = <1350000 1350000 1400000>;
+			opp-microvolt-L2 = <1350000 1350000 1400000>;
+			opp-microvolt-L3 = <1350000 1350000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 
 		opp-1488000000 {
-			opp-hz = <0x00 0x58ad8000>;
-			opp-microvolt = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L0 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L1 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L2 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L3 = <0x155cc0 0x155cc0 0x155cc0>;
-			clock-latency-ns = <0x9c40>;
+			opp-hz = /bits/ 64 <1488000000>;
+			opp-microvolt = <1350000 1350000 1400000>;
+			opp-microvolt-L0 = <1350000 1350000 1400000>;
+			opp-microvolt-L1 = <1350000 1350000 1400000>;
+			opp-microvolt-L2 = <1350000 1350000 1400000>;
+			opp-microvolt-L3 = <1350000 1350000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 
 		opp-1512000000 {
-			opp-hz = <0x00 0x5a19ec00>;
-			opp-microvolt = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L0 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L1 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L2 = <0x155cc0 0x155cc0 0x155cc0>;
-			opp-microvolt-L3 = <0x155cc0 0x155cc0 0x155cc0>;
-			clock-latency-ns = <0x9c40>;
+			opp-hz = /bits/ 64 <1512000000>;
+			opp-microvolt = <1350000 1350000 1400000>;
+			opp-microvolt-L0 = <1350000 1350000 1400000>;
+			opp-microvolt-L1 = <1350000 1350000 1400000>;
+			opp-microvolt-L2 = <1350000 1350000 1400000>;
+			opp-microvolt-L3 = <1350000 1350000 1400000>;
+			clock-latency-ns = <40000>;
 		};
 	};
 
@@ -1146,7 +1146,7 @@ cpu0-opp-table {
 					regulator-always-on;
 					regulator-boot-on;
 					regulator-min-microvolt = <0xcf850>;
-					regulator-max-microvolt = <0x155cc0>;
+					regulator-max-microvolt = <0x162010>;
 					regulator-ramp-delay = <0x1771>;
 					regulator-initial-mode = <0x02>;
 					regulator-name = "vdd_arm";
