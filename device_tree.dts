@@ -368,9 +368,51 @@
 		rockchip,thermal-zone = "soc-thermal";
 		phandle = <0x03>;
 
+		opp-408000000 {
+			opp-hz = <0x00 0x18436c00>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-600000000 {
+			opp-hz = <0x00 0x23c34600>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-696000000 {
+			opp-hz = <0x00 0x29759c00>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-816000000 {
+			opp-hz = <0x00 0x30a8d400>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-900000000 {
+			opp-hz = <0x00 0x35a4e900>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-996000000 {
+			opp-hz = <0x00 0x3b573f00>;
+			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
 		opp-1008000000 {
 			opp-hz = <0x00 0x3c14dc00>;
 			opp-microvolt = <0x11edd8>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-1104000000 {
+			opp-hz = <0x00 0x41d3d800>;
+			opp-microvolt = <0x13d620>;
 			clock-latency-ns = <0x9c40>;
 		};
 
@@ -387,31 +429,43 @@
 		};
 
 		opp-1296000000 {
-			opp-hz = <0x00 0x4d3f6400>;
+			opp-hz = <0x00 0x4d394000>;
 			opp-microvolt = <0x149970>;
 			clock-latency-ns = <0x9c40>;
 		};
 
 		opp-1368000000 {
-			opp-hz = <0x00 0x518b6e00>;
+			opp-hz = <0x00 0x51897c00>;
 			opp-microvolt = <0x149970>;
 			clock-latency-ns = <0x9c40>;
 		};
 
 		opp-1416000000 {
-			opp-hz = <0x00 0x546e5600>;
+			opp-hz = <0x00 0x5471b800>;
+			opp-microvolt = <0x149970>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-1440000000 {
+			opp-hz = <0x00 0x55d4a800>;
+			opp-microvolt = <0x149970>;
+			clock-latency-ns = <0x9c40>;
+		};
+
+		opp-1464000000 {
+			opp-hz = <0x00 0x57379800>;
 			opp-microvolt = <0x149970>;
 			clock-latency-ns = <0x9c40>;
 		};
 
 		opp-1488000000 {
-			opp-hz = <0x00 0x58b34000>;
+			opp-hz = <0x00 0x589a8800>;
 			opp-microvolt = <0x149970>;
 			clock-latency-ns = <0x9c40>;
 		};
 
 		opp-1512000000 {
-			opp-hz = <0x00 0x5a1f4a00>;
+			opp-hz = <0x00 0x59fd7800>;
 			opp-microvolt = <0x149970>;
 			clock-latency-ns = <0x9c40>;
 		};
@@ -675,6 +729,71 @@
 
 	serial@ff030000 {
 		compatible = "rockchip,rk3326-uart\0snps,dw-apb-uart";
+		status = "okay";
+	};
+
+	gpu-opp-table {
+		compatible = "operating-points-v2";
+		opp-shared;
+		phandle = <0x200>;
+
+		opp-400000000 {
+			opp-hz = <0x00 0x17d78400>;
+			opp-microvolt = <0x100590>;
+		};
+
+		opp-520000000 {
+			opp-hz = <0x00 0x1efe9200>;
+			opp-microvolt = <0x100590>;
+		};
+
+		opp-650000000 {
+			opp-hz = <0x00 0x26be7580>;
+			opp-microvolt = <0x118c30>;
+		};
+
+		opp-780000000 {
+			opp-hz = <0x00 0x2e7e5900>;
+			opp-microvolt = <0x1312d0>;
+		};
+	};
+
+	gpu@ff400000 {
+		compatible = "rockchip,px30-mali\0arm,mali-bifrost";
+		reg = <0x00 0xff400000 0x00 0x4000>;
+		interrupts = <0x00 0x2d 0x04 0x00 0x2e 0x04 0x00 0x2f 0x04>;
+		interrupt-names = "job", "mmu", "gpu";
+		clocks = <0x02 0x49 0x02 0x4a>;
+		clock-names = "core", "bus";
+		operating-points-v2 = <0x200>;
+		power-domains = <0x8b 0x0e>;
+		status = "okay";
+	};
+
+	dmc-opp-table {
+		compatible = "operating-points-v2";
+		opp-shared;
+		phandle = <0x201>;
+
+		opp-333000000 {
+			opp-hz = <0x00 0x13d92d40>;
+			opp-microvolt = <0x100590>;
+		};
+
+		opp-528000000 {
+			opp-hz = <0x00 0x1f78a400>;
+			opp-microvolt = <0x118c30>;
+		};
+
+		opp-666000000 {
+			opp-hz = <0x00 0x27b2a900>;
+			opp-microvolt = <0x124f80>;
+		};
+	};
+
+	dmc {
+		compatible = "rockchip,px30-dmc";
+		operating-points-v2 = <0x201>;
 		status = "okay";
 	};
 };
