@@ -2110,6 +2110,23 @@
 			opp-microvolt-L2 = <0x10c8e0>;
 			opp-microvolt-L3 = <0x100590>;
 		};
+
+		/* ---- Ab hier: manuell ergaenzte, moderate Community-OC-Stufe ----
+		 * NICHT Teil von teacupx/overclock-r36s (deren Projekt deckt nur CPU ab).
+		 * Nutzt bewusst dieselbe Spannung wie die bereits vorhandene 640-MHz-Stufe
+		 * (0x124f80 = 1.200.000 uV), um das Spannungsniveau nicht weiter zu erhoehen.
+		 * Achtung: 1.200.000 uV liegt bereits ueber Rockchips absoluter Grenze fuer
+		 * VDD_LOGIC (1.15V lt. RK3326-Datasheet) - diese DTS ist also schon vor
+		 * dieser Aenderung ausserhalb der Spezifikation betrieben worden.
+		 * Teste unbedingt schrittweise und beobachte die GPU-Temperatur. */
+		opp-700000000 {
+			opp-hz = <0x00 0x29b92700>;
+			opp-microvolt = <0x124f80>;
+			opp-microvolt-L0 = <0x124f80>;
+			opp-microvolt-L1 = <0x124f80>;
+			opp-microvolt-L2 = <0x124f80>;
+			opp-microvolt-L3 = <0x124f80>;
+		};
 	};
 
 	hevc_service@ff440000 {
@@ -2662,6 +2679,32 @@
 
 		opp-1040000000 {
 			opp-hz = <0x00 0x3dfd2400>;
+			opp-microvolt = <0x124f80>;
+			opp-microvolt-L0 = <0x124f80>;
+			opp-microvolt-L1 = <0x124f80>;
+			opp-microvolt-L2 = <0x124f80>;
+			opp-microvolt-L3 = <0x124f80>;
+		};
+
+		/* ---- Ab hier: manuell ergaenzte, moderate Community-OC-Stufe ----
+		 * NICHT Teil von teacupx/overclock-r36s (deren Projekt deckt nur CPU ab).
+		 * WICHTIGSTE WARNUNG DIESER GESAMTEN DATEI:
+		 * Der RK3326 ist laut Rockchip-Datasheet offiziell nur bis DDR3-1600 /
+		 * LPDDR3-1600 spezifiziert (effektiv ~800 MHz DFI-Takt). Die vorhandene
+		 * 1040-MHz-Stufe in dieser DTS liegt bereits ~30% ueber dieser Spezifikation.
+		 * Diese neue 1100-MHz-Stufe geht noch weiter darueber hinaus.
+		 * Im Gegensatz zu CPU/GPU-Instabilitaet (Absturz/Neustart) kann RAM-
+		 * Instabilitaet zu STILLER DATENKORRUPTION auf der SD-Karte fuehren, die
+		 * erst spaeter bemerkt wird (kaputte Spielstaende, korruptes Dateisystem).
+		 * Nutzt bewusst dieselbe Spannung wie die vorhandene 1040-MHz-Stufe
+		 * (0x124f80 = 1.200.000 uV), keine weitere Spannungserhoehung.
+		 * DRINGEND EMPFOHLEN: Nach Aktivierung ausgiebige Stresstests mit
+		 * Pruefsummen-Vergleich (z.B. memtester, oder wiederholtes Kopieren
+		 * grosser Dateien mit md5sum-Vergleich) durchfuehren, bevor du dem
+		 * System wichtige Daten anvertraust. Bei geringstem Zweifel: Stufe
+		 * entfernen und bei 1040 MHz bleiben. */
+		opp-1100000000 {
+			opp-hz = <0x00 0x4190ab00>;
 			opp-microvolt = <0x124f80>;
 			opp-microvolt-L0 = <0x124f80>;
 			opp-microvolt-L1 = <0x124f80>;
