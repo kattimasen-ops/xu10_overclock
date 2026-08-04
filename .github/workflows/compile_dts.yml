@@ -18,8 +18,31 @@ jobs:
       - name: Compile DTS to DTB
         run: |
           echo "Kompiliere device_tree.dts..."
-          dtc -I dts -O dtb -o device_tree.dtb device_tree.dts
+          # -p 0x1000 = 4 KB zusaetzlicher Leerraum (Padding) im Blob, analog zum
+          # Original-Werks-DTB, damit der Bootloader Properties nachtragen kann.
+          # Passe die Groesse ggf. an, falls dein Original-DTB mehr/weniger Slack hatte
+          # (siehe Diagnose-Schritt unten -> "Original totalsize" minus "size_dt_struct + size_dt_strings").
+          dtc -I dts -O dtb -p 0x1000 -o device_tree.dtb device_tree.dts
           echo "Kompilierung erfolgreich abgeschlossen."
+
+      - name: Report DTB size and structural diff
+        run: |
+          echo "=== Groesse der kompilierten DTB ==="
+          ls -la device_tree.dtb
+
+          echo "=== Struktur-Header (zur Kontrolle) ==="
+          dtc -I dtb -O dts device_tree.dtb -o /tmp/roundtrip_check.dts
+          echo "Anzahl Zeilen im rekompilierten dts (Sanity-Check):"
+          wc -l /tmp/roundtrip_check.dts
+
+          echo "=== Klammern-Balance-Check ==="
+          python3 -c "
+          c = open('device_tree.dts').read()
+          o, cl = c.count('{'), c.count('}')
+          print(f'Oeffnende: {o}  Schliessende: {cl}')
+          assert o == cl, 'UNBALANCED BRACES - Fehler in der Quelle!'
+          print('OK: Klammern balanciert.')
+          "
 
       - name: Upload DTB Artifact
         uses: actions/upload-artifact@v4
